@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        
+    <script>
+        function CalculateClick(){
+            var a=parseFloat(document.getElementById("optAge").value);
+            var w=parseFloat(document.getElementById("optWeight").value);
+            var h=parseFloat(document.getElementById("optHeight").value);
+            var value=document.getElementById("yourValue");
+            value.style.marginTop="2%";
+            var optMale=document.getElementById("optMale");
+            var optFemale=document.getElementById("optFemale");
+           
+            if(optMale.checked){
+                var bmi=(w/Math.pow(h*0.3048,2)).toFixed(2);
+                if(bmi>=1 && bmi<=18.5){
+                    value.style.marginLeft ="55%";
+                }else if(bmi>=19 && bmi<=25){
+                    value.style.marginLeft ="72%";
+                }else if(bmi>=26 && bmi<=30){
+                    value.style.marginLeft ="82%";
+                }
+                else if(bmi>30 ){
+                    value.style.marginLeft ="95%";
+                }
+           
+            }
+            if(optFemale.checked){
+                var bmi=(w/Math.pow(h*0.3048,2)).toFixed(2);
+                if(bmi>=1 && bmi<=18.5){
+                    value.style.marginLeft ="60%";
+                }else if(bmi>=19 && bmi<=25){
+                    value.style.marginLeft ="75%";
+                }else if(bmi>=26 && bmi<=30){
+                    value.style.marginLeft ="82%";
+                }
+                else if(bmi>30 ){
+                    value.style.marginLeft ="95%";
+                }
+           
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2 class="text-white mt-4 bg-dark text-starts">BMI calculator</h2>
+    <div class="bg-light p-5">
+        <div >
+            <div>
+                <input type="radio" class="form-check-input" id="optMale" name="Gender"><label class="form-check-label">Male</label>
+               
+                <input type="radio" class="form-check-input" checked id="optFemale" name="Gender"><label class="form-check-label">Female</label>
+            </div>
+            <div class="mt-2 w-25 ">Age(1 year or above)*
+                <input type="text" class="form-control" id="optAge" placeholder="years">
+            </div>
+            <div class="row  mt-2 w-25">
+                <div class="col">
+                    Height*
+                    <input type="text"  class="form-control" id="optHeight"  placeholder="cm">
+                </div>
+                <div class="col">
+                    Weight*
+                    <input type="text"  class="form-control" id="optWeight"  placeholder="kg">
+                </div>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-info" onclick="CalculateClick()">Calculate</button>
+            </div>
+               
+         </div>
+         <div class="mt-3">
+            <div>
+                The body mass index(BMI) calculator estimates the amount of body fat a person has in relation to age,height and weight.
+            </div>
+            <div class="mt-4">
+                    <div class="progress w-50">
+                        <div class="progress-bar bg-dark" style="width: 25%;">Underweight</div>
+                        <div class="progress-bar bg-success ms-1" style="width: 25%;">Normal</div>
+                        <div class="progress-bar bg-warning ms-1" style="width: 25%;">Overweight</div>
+                        <div class="progress-bar bg-danger ms-1" style="width: 25%;">Obsese</div>
+                    </div>
+            </div>
+            <div  id="yourValue" style="margin-left:15%;margin-top:1%" >
+                <span class="bi bi-caret-down-fill"></span>
+                <div>You</div>
+            </div>
+            <div class="col mt-1 w-15"> <b>18.5</b><br><b>Normal BMI</b></div>          
+         </div>
+    </div>
+   
+</body>
+</html>
